@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Search movies, explore ratings, and save your favorite films.">
+    <title>RG FilmFlix | Movie Search</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="navbar">
+        <a class="logo" href="index.html">🎬 RG FilmFlix</a>
+        <span class="tagline">Discover your next favorite movie</span>
+        <button id="favoritesToggle" class="outline-btn">♡ Favorites <span id="favoriteCount">0</span></button>
+    </header>
+
+    <main>
+        <section class="hero">
+            <p class="eyebrow">YOUR MOVIE DISCOVERY HUB</p>
+            <h1>Find a movie worth watching.</h1>
+            <p>Explore movies and series, discover ratings, and save your favorites.</p>
+
+            <form id="searchForm" class="search-form">
+                <div class="search-field">
+                    <label for="movieSearch">Movie or series title</label>
+                    <input id="movieSearch" type="search" placeholder="Try Batman, Avatar, Inception..." autocomplete="off" required>
+                    <div id="suggestions" class="suggestions" hidden></div>
+                </div>
+
+                <div class="filter-field">
+                    <label for="yearFilter">Year</label>
+                    <input id="yearFilter" type="number" min="1888" max="2100" placeholder="Any year">
+                </div>
+
+                <div class="filter-field">
+                    <label for="typeFilter">Type</label>
+                    <select id="typeFilter">
+                        <option value="">All types</option>
+                        <option value="movie">Movies</option>
+                        <option value="series">Series</option>
+                        <option value="episode">Episodes</option>
+                    </select>
+                </div>
+
+                <button class="primary-btn search-button" type="submit">Search</button>
+            </form>
+        </section>
+
+        <section class="results-section">
+            <div class="results-heading">
+                <div>
+                    <p class="eyebrow">EXPLORE</p>
+                    <h2 id="resultsTitle">Search for a movie</h2>
+                </div>
+                <p id="resultsCount" aria-live="polite"></p>
+            </div>
+
+            <p id="statusMessage" class="status-message" role="status">
+                Enter a title above to get started.
+            </p>
+            <div id="movieGrid" class="movie-grid"></div>
+
+            <div class="pagination">
+                <button id="previousPage" class="outline-btn" disabled>← Previous</button>
+                <span id="pageLabel">Page 1</span>
+                <button id="nextPage" class="outline-btn" disabled>Next →</button>
+            </div>
+        </section>
+    </main>
+
+    <section id="favoritesSection" class="favorites-section" hidden>
+        <div class="results-heading">
+            <div>
+                <p class="eyebrow">YOUR COLLECTION</p>
+                <h2>Favorite Movies</h2>
+            </div>
+            <button id="closeFavorites" class="outline-btn">Close</button>
+        </div>
+        <div id="favoritesGrid" class="movie-grid"></div>
+        <p id="favoritesEmpty" class="status-message" hidden>You haven't saved any favorites yet.</p>
+    </section>
+
+    <dialog id="movieModal" class="movie-modal">
+        <button id="closeModal" class="modal-close" aria-label="Close details">×</button>
+        <div id="modalContent"></div>
+    </dialog>
+
+    <footer>
+        <p>© 2026 RG FilmFlix · Built with HTML, CSS, JavaScript and the OMDb API.</p>
+        <p>Movie data and posters are provided by OMDb.</p>
+    </footer>
+</body>
+</html>
